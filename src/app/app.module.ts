@@ -9,6 +9,8 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { FormsModule } from '@angular/forms';
+import { cpfReducer } from './core/document/reducers/reducer';
+import { CpfEffects } from './core/document/effects/effect';
 
 @NgModule({
   declarations: [
@@ -19,8 +21,8 @@ import { FormsModule } from '@angular/forms';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    StoreModule.forRoot({}, {}),
-    EffectsModule.forRoot([]),
+    StoreModule.forRoot({ cpf: cpfReducer }),
+    EffectsModule.forRoot([CpfEffects]),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production })
   ],
   providers: [],

@@ -1,30 +1,53 @@
 // cpf.service.ts
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-
-interface CpfData {
-  [key: string]: string;
-}
+import { CpfState } from '../document/store/cpf';
+import { cpf_data } from 'src/app/data/cpf-data';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CpfService {
-  private cpfData: CpfData = {
-    '11111111111': 'João da Silva',
-    '22222222222': 'Maria Oliveira',
-  };
 
-  checkCpf(cpf: string): Observable<{ name: string; status: string }> {
-    const cleanCpf = cpf.replace(/\D/g, ''); // Remove all non-digit characters
-    const isValidCpf = /^\d{11}$/.test(cleanCpf);
+  verifyCpf(cpf: string): Observable<CpfState> {
+    const cleanCpf = cpf.replace(/\D/g, '');
+    const isValidCpf = this.validateCPF(cleanCpf);
+
+    const invalid = {
+      name: 'CPF não é válido',
+      status: 'Irregular',
+      app_account: 'Aplicação não encontrada',
+      bank_account: 'Conta não encontrada',
+    };
 
     if (!isValidCpf) {
-      return of({ name: 'CPF not valid', status: 'Not Regular' });
+      return of(invalid);
     }
 
-    const name = this.cpfData[cleanCpf] || 'CPF not found';
-    const status = name !== 'CPF not found' ? 'Regular' : 'Not Regular';
-    return of({ name, status });
+    const [firstItem] = cpf_data;
+
+    const result = {
+      ...firstItem
+    };
+
+    return of(result);
   }
+
+  validateCPF(cpf: string) {
+    cpf = cpf.replace(/\D/g, '');
+    if (cpf.toString().length != 11 || /^(\d)\1{10}$/.test(cpf)) return false;
+    var result = true;
+    [9, 10].forEach(function (j) {
+      var soma = 0, r;
+      cpf.split(/(?=)/).splice(0, j).forEach(function (e, i) {
+        soma += parseInt(e) * ((j + 2) - (i + 1));
+      });
+      r = soma % 11;
+      r = (r < 2) ? 0 : 11 - r;
+      if (r.toString() !== cpf.substring(j, j + 1)) result = false;
+
+    });
+    return result;
+  }
+
 }

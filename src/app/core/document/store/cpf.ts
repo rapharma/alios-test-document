@@ -1,7 +1,9 @@
 export interface CpfState {
   name: string;
   status: string;
-  loading: boolean;
-  error: string | null;
+  app_account: string;
+  bank_account: string;
+  loading?: boolean;
+  error?: string | null;
 }
   

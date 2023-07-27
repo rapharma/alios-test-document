@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { take } from 'rxjs';
-import { checkCpf } from 'src/app/core/document/actions/actions';
+import { Observable, take } from 'rxjs';
+import { verifyCpf } from 'src/app/core/document/actions/action';
 import { AppState } from 'src/app/core/document/store/app-state';
 import { CpfState } from 'src/app/core/document/store/cpf';
 import { CpfService } from 'src/app/core/services/cpf.service';
@@ -19,32 +19,17 @@ export class DocumentComponent implements OnInit {
   cpf: string = '';
   name: string = '';
   status: string = '';
+  app_account: string = '';
+  bank_account: string = '';
   loading: boolean = false;
   error: string | null = null;
+  cpfState$: Observable<CpfState>;
 
-  constructor(private store: Store<AppState>, private cpfService: CpfService) {}
+  constructor(private store: Store<AppState>, private cpfService: CpfService) {
+    this.cpfState$ = this.store.select('cpf');
+  }
 
-  onCheckCpf() {
-    this.loading = true;
-    this.error = null;
-
-    this.cpfService.checkCpf(this.cpf)
-      .pipe(
-        take(1)
-      )
-      .subscribe({
-        next: (result) => {
-          this.loading = false;
-          this.name = result.name;
-          this.status = result.status;
-
-          // update the CPF state
-          this.store.dispatch(checkCpf({ cpf: this.cpf }));
-        },
-        error: (error) => {
-          this.loading = false;
-          this.error = 'Failed to check CPF.';
-        }
-      });
+  verifyCpf(cpf: string): void {
+    this.store.dispatch(verifyCpf({ cpf }));
   }
 }
