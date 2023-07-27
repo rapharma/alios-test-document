@@ -14,7 +14,7 @@ export class CpfService {
     const isValidCpf = this.validateCPF(cleanCpf);
 
     const invalid = {
-      name: 'CPF não é válido',
+      name: 'Nome não encontrado',
       status: 'Irregular',
       app_account: 'Aplicação não encontrada',
       bank_account: 'Conta não encontrada',
