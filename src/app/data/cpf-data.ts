@@ -1,4 +1,4 @@
-export const cpf_data = [
+export const cpf_list = [
     {
         name: 'Mariane de Sousa Oliveira',
         status: 'Regular',

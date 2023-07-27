@@ -1,4 +1,4 @@
-export interface CpfState {
+export interface PersonState {
   name: string;
   status: string;
   app_account: string;

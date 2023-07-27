@@ -1,15 +1,15 @@
 // cpf.service.ts
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { CpfState } from '../document/store/cpf';
-import { cpf_data } from 'src/app/data/cpf-data';
+import { PersonState } from '../document/models/person';
+import { cpf_list } from 'src/app/data/cpf-data';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CpfService {
 
-  verifyCpf(cpf: string): Observable<CpfState> {
+  verifyCpf(cpf: string): Observable<PersonState> {
     const cleanCpf = cpf.replace(/\D/g, '');
     const isValidCpf = this.validateCPF(cleanCpf);
 
@@ -24,7 +24,7 @@ export class CpfService {
       return of(invalid);
     }
 
-    const [firstItem] = cpf_data;
+    const [firstItem] = cpf_list;
 
     const result = {
       ...firstItem

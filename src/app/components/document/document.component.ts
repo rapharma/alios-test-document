@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable, take } from 'rxjs';
 import { verifyCpf } from 'src/app/core/document/actions/action';
-import { AppState } from 'src/app/core/document/store/app-state';
-import { CpfState } from 'src/app/core/document/store/cpf';
+import { AppState } from 'src/app/core/document/models/app-state';
+import { PersonState } from 'src/app/core/document/models/person';
 import { CpfService } from 'src/app/core/services/cpf.service';
 
 @Component({
@@ -23,10 +23,10 @@ export class DocumentComponent implements OnInit {
   bank_account: string = '';
   loading: boolean = false;
   error: string | null = null;
-  cpfState$: Observable<CpfState>;
+  personState$: Observable<PersonState>;
 
   constructor(private store: Store<AppState>, private cpfService: CpfService) {
-    this.cpfState$ = this.store.select('cpf');
+    this.personState$ = this.store.select('cpf');
   }
 
   verifyCpf(cpf: string): void {

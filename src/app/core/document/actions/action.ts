@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { CpfState } from '../store/cpf';
+import { PersonState } from '../models/person';
 
 export const verifyCpf = createAction(
     '[CPF] Verify',
@@ -8,7 +8,7 @@ export const verifyCpf = createAction(
 
 export const verifyCpfSuccess = createAction(
     '[CPF] Verify Success',
-    props<{ payload: CpfState }>()
+    props<{ payload: PersonState }>()
 );
   
 export const verifyCpfFailure = createAction(
