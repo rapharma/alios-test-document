@@ -1,13 +1,23 @@
-.bd-placeholder-img {
-    font-size: 1.125rem;
-    text-anchor: middle;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    user-select: none;
-  }
-
-  @media (min-width: 768px) {
-    .bd-placeholder-img-lg {
-      font-size: 3.5rem;
-    }
-  }
+.bottomdiv {
+  padding: 10px;
+}
+.bottomdiv button {
+  font-size: 12px;
+  font-weight: 700;
+}
+.buttondiv {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  padding-top: 0px;
+}
+.rightbtn{
+  border-radius: 0;
+  color: #165C7D;
+}
+.leftbtn{
+  color: white;
+  border-color: #165C7D;
+  background-color: #165C7D;
+  border-radius: 0;
+  margin-right: 10px;
+}

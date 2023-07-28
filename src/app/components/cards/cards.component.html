@@ -1,15 +1,22 @@
-<span *ngIf="personState$ | async as personState">
+<ng-container *ngIf="personState$ | async as personState">
 
 
-<div class="card" style="width: 18rem;" *ngIf="personState.name">
-    <div class="card-body">
-      <h5 class="card-title">{{title}}</h5>
-      <h6 class="card-subtitle mb-2 text-body-secondary">{{subTitle}}</h6>
-      <div *ngIf="personState.name">
-        <app-info-cards [title]="title" [personState]="personState"></app-info-cards>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="">
+        <div class="card" *ngIf="personState.name">
+          <div class="card-body">
+            <h5 class="card-title">{{title}}</h5>
+            <h6 class="card-subtitle mb-2 text-body-secondary">{{subTitle}}</h6>
+            <div *ngIf="personState.name">
+              <app-info-cards [title]="title" [personState]="personState"></app-info-cards>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-</div>
+  </div>
+  
 
-</span>
+</ng-container>
     
