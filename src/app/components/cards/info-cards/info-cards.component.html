@@ -1,0 +1,60 @@
+
+    <span *ngIf="title.includes('Situação')">
+        <div class="infocards">
+            <a href="#" class="nav-link py-3 px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right"
+                data-bs-original-title="Customers">
+                <i class="bi bi-person-fill fs-5"></i>
+            </a>
+            <div class="info">
+                <p class="text-body-secondary">Nome</p>
+                <p>{{ personState.name}}</p>
+            </div>
+            <p></p>
+        </div>
+        <div class="infocards">
+            <a href="#" class="nav-link py-3 px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right"
+                data-bs-original-title="Customers">
+                <i class="bi bi-check fs-5" *ngIf="personState.status == 'Regular'"></i>
+                <i class="bi bi-x fs-5" *ngIf="personState.status == 'Irregular'"></i>
+            </a>
+            <div class="info">
+                <p class="text-body-secondary">Situação do CPF</p>
+                <p>{{ personState.status}}</p>
+            </div>
+            <p></p>
+        </div>
+    </span>
+
+    <span *ngIf="title.includes('aplicação')">
+        <div class="infocards">
+            <a href="#" class="nav-link py-3 px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right"
+                data-bs-original-title="Customers">
+                <i class="bi bi-credit-card fs-5"></i>
+            </a>
+            <div class="info">
+                <p class="text-body-secondary">Número da conta</p>
+                <p>{{ personState.app_account}}</p>
+            </div>
+            <p></p>
+        </div>
+        <div class="infocards">
+            <p>Duplicar conta</p>
+        </div>
+    </span>
+
+    <span *ngIf="title.includes('corrente')">
+        <div class="infocards">
+            <a href="#" class="nav-link py-3 px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right"
+                data-bs-original-title="Customers">
+                <i class="bi bi-credit-card fs-5"></i>
+            </a>
+            <div class="info">
+                <p class="text-body-secondary">Número da conta</p>
+                <p>{{ personState.bank_account}}</p>
+            </div>
+            <p></p>
+        </div>
+        <div class="infocards">
+            <p>Duplicar conta</p>
+        </div>
+    </span>

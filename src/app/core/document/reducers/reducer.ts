@@ -3,7 +3,7 @@ import * as CpfActions from '../actions/action';
 import { AppState } from '../models/app-state';
 
 export const initialState: AppState = {
-  cpf: {
+  person: {
     name: '',
     status: '',
     app_account: '',
@@ -14,7 +14,7 @@ export const initialState: AppState = {
 }
 
 export const cpfReducer = createReducer(
-  initialState.cpf,
+  initialState.person,
   on(CpfActions.verifyCpf, state => ({ ...state, loading: true, error: null })),
   on(CpfActions.verifyCpfSuccess, (state, { payload }) => ({ ...state, ...payload, loading: false })),
   on(CpfActions.verifyCpfFailure, (state, { error }) => ({ ...state, loading: false, error }))

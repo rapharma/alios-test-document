@@ -1,0 +1,41 @@
+.imageprofile{
+  height: 50px;
+}
+.navbar{
+  background-color: white;
+  padding-right: 5%;
+}
+.rightdiv{
+  width: 250px;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+.Bnav{
+  margin-left: 15px;
+  display: flex;
+  flex-direction: row;
+}
+.Mybtn{
+  height: 40px;
+  color: #165C7D;
+  border-color: #165C7D;
+  border-radius: 50px;
+}
+
+.icon-bleu{
+  color: #165C7D;
+}
+
+@media only screen and (max-width: 990px),
+     screen and (max-height: 750px) {
+
+      .rightdiv {
+        width: 15%;
+        column-gap: 7px;
+      }
+
+      .Mybtn{
+        font-size: 11px;
+    }
+}

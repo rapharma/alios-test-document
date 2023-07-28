@@ -1,0 +1,147 @@
+$brand-color: #165C7D;
+$body-color: #000000;
+
+.Mbody {
+  position: relative;
+  width: 100vw;
+  height: 100%;
+  flex-grow: 2;
+}
+.mainbody{
+  background-color: #E7EEF1;
+  padding-top: 30px;
+  height: 800px;
+  display: flex;
+  flex-direction: column;}
+.progress-container {
+    display: flex;
+    justify-content: center; /* Horizontally center the child element */
+    align-items: center;
+    width:100%;
+    margin: 2em auto;
+}
+.progress-steps { width:50%; counter-reset: step; padding-left: 0px; }
+  .progress-steps li {
+    list-style-type: none;
+    width: 25%;
+    float: left;
+    font-size: .7em;
+    position: relative;
+    text-align: center;
+    color: $body-color;
+  }
+  .progress-steps li:before {
+    width: 2.5em;
+    height: 2.5em;
+    content: counter(step);
+    counter-increment: step;
+    line-height: 2.5em;
+    border: 2px solid $body-color;
+    display: block;
+    text-align: center;
+    margin: 0 auto .7em auto;
+    border-radius: 50%;
+    background-color: white;
+  }
+  .progress-steps li:after {
+    width: 100%;
+    height: 2px;
+    content: '';
+    position: absolute;
+    background-color: $body-color;
+    top: 1.3em;
+    left: -50%;
+    z-index: -1;
+  }
+  .progress-steps li:first-child:after {
+    content: none;
+  }
+  .progress-steps li.active {
+    color: $brand-color;
+  }
+  .progress-steps li.active:before {
+    border-color: $brand-color;
+  }
+  .progress-steps li.active + li:after {
+    background-color: $brand-color;
+  }
+
+.searchPart{
+  margin-left: 25px;
+  display: flex;
+  flex-direction: column;
+ }
+.Sinput{
+    max-width: 400px;
+    border-radius: 0%;
+    margin-right: 2vw;
+ }
+.btn-primary{
+    background-color: #165C7D;
+    border-color: #165C7D;
+    border-radius: 0%;
+}
+.searchdiv{
+    display: flex;
+    flex-direction: row;
+}
+.Mbody{
+  height: 85vh;
+  display: flex;
+  flex-direction: column;
+ // justify-content: space-between;
+}
+.Buttondiv{
+  margin-left: 20px;
+  display: flex;
+  flex-direction: row;
+  padding-top: 15px;
+
+}
+.rightbtn{
+  margin-right: 5vw;
+}
+.leftbtn{
+  color: #165C7D;
+  border-color: #165C7D;
+  border-radius: 0%;
+}
+
+
+@media screen and (max-width: 990px),
+       screen and (max-height: 750px) {
+        .mainbody {
+          padding-top: 0px;
+          width: 100%;
+          height: 90%;
+        }
+
+        .progress-container {
+          margin-bottom : 0px;
+        }
+
+        .progress-steps {
+          width: 55%;
+        }
+        .centerdiv {
+          word-wrap: break-word;
+        }
+
+        .Sinput {
+          max-width : 300px;
+           height : 30px;
+        }
+        .searchdiv button {
+          height: 32px;
+          font-size: 12px;
+        }
+
+        .bottomdiv button {
+          font-size: 12px;
+        }
+        .buttondiv {
+          margin-top: 5px;
+          margin-bottom: 5px;
+          padding-top: 0px;
+        }
+}
